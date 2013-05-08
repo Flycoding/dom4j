@@ -1,7 +1,9 @@
 package com.flyingh.dom4j;
 
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.nio.charset.Charset;
 import java.util.List;
 
@@ -26,6 +28,30 @@ public class Demo {
 				"books.xml"));
 		// document = new SAXReader().read(getClass().getClassLoader()
 		// .getResourceAsStream("com/flyingh/dom4j/books.xml"));
+	}
+
+	@Test
+	public void test8() throws IOException {
+		document.getRootElement().element("book").addElement("info")
+				.addAttribute("haha", "hehe");
+		OutputFormat format = OutputFormat.createPrettyPrint();
+		format.setEncoding("UTF-8");
+		XMLWriter xmlWriter = new XMLWriter(new OutputStreamWriter(
+				new FileOutputStream(PATH), "UTF-8"), format);
+		xmlWriter.write(document);
+		xmlWriter.close();
+	}
+
+	@Test
+	public void test7() throws IOException {
+		document.getRootElement().element("book").addElement("name")
+				.setText("hello world");
+		OutputFormat format = OutputFormat.createPrettyPrint();
+		format.setEncoding("UTF-8");
+		XMLWriter xmlWriter = new XMLWriter(new FileOutputStream(PATH), format);
+		xmlWriter.write(document);
+		xmlWriter.close();
+
 	}
 
 	@Test
