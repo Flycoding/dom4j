@@ -5,11 +5,15 @@
 		<name>Java</name>
 		<author>ABC</author>
 		<price>88</price>
-		<price>99.9</price>
 	</book>
 	<book id="2">
 		<name>Android</name>
 		<author>CBA</author>
 		<price>85</price>
+	</book>
+	<book id="3">
+		<name>Java规范</name>
+		<author>JG</author>
+		<price>100</price>
 	</book>
 </books>

@@ -2,6 +2,7 @@ package com.flyingh.dom4j;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.charset.Charset;
 import java.util.List;
 
 import org.dom4j.Attribute;
@@ -28,10 +29,17 @@ public class Demo {
 	}
 
 	@Test
+	public void test6() {
+		System.out.println(Charset.defaultCharset());
+	}
+
+	@Test
 	public void test5() throws IOException {
 		document.getRootElement().element("book").addElement("price")
 				.setText("99.9");
-		XMLWriter xmlWriter = new XMLWriter(new FileWriter(PATH),
+		FileWriter writer = new FileWriter(PATH);
+		System.out.println("writer encoding:" + writer.getEncoding());
+		XMLWriter xmlWriter = new XMLWriter(writer,
 				OutputFormat.createPrettyPrint());
 		xmlWriter.write(document);
 		xmlWriter.close();
